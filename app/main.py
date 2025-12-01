@@ -1,8 +1,6 @@
 from typing import List
-
 from fastapi import Depends, FastAPI, HTTPException, Query
 from fastapi.responses import JSONResponse
-
 from app.fmp_client import FMPClient
 from app.schemas import (
     CompanySearchItem,
@@ -15,7 +13,6 @@ from app.schemas import (
     CompanyHistoryResponse,
 )
 
-
 app = FastAPI(
     title="Company Fundamentals Microservice",
     version="0.1.0",
@@ -25,10 +22,8 @@ app = FastAPI(
     ),
 )
 
-
 def get_client() -> FMPClient:
     return FMPClient()
-
 
 @app.get("/health")
 def health_check() -> dict:
@@ -118,7 +113,6 @@ def company_snapshot(
     )
 
     return snapshot
-
 
 @app.get(
     "/companies/{symbol}/history",
